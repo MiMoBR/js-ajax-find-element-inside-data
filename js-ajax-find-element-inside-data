@@ -1,0 +1,20 @@
+$('#submitform').click(function () {
+    $.ajax({
+        url: "getinfo.asp",
+        data: {
+            txtsearch: $('#appendedInputButton').val()
+        },
+        type: "GET",
+        dataType: "html",
+        success: function (data) {
+            var result = $('<div />').append(data).find('#showresults').html();
+            $('#showresults').html(result);
+        },
+        error: function (xhr, status) {
+            alert("Sorry, there was a problem!");
+        },
+        complete: function (xhr, status) {
+            //$('#showresults').slideDown('slow')
+        }
+    });
+});
